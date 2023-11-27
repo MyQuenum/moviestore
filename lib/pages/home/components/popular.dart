@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:moviestore/models/movies.dart';
+import 'package:moviestore/pages/details/details.dart';
 
 class PopularMovies extends StatelessWidget {
   PopularMovies({super.key});
@@ -14,6 +15,7 @@ class PopularMovies extends StatelessWidget {
           padding: const EdgeInsets.symmetric(vertical: 25, horizontal: 25),
           scrollDirection: Axis.horizontal,
           itemBuilder: ((context, index) => GestureDetector(
+            onTap: () => Navigator.of(context).push(MaterialPageRoute(builder: ((context) => DetailPage(movie: popularMovies[index])))),
                 child: Card(
                   elevation: 7,
                   shape: RoundedRectangleBorder(

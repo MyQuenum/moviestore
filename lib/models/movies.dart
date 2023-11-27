@@ -4,7 +4,7 @@ class Movie {
   String title;
   String category;
   num views;
-  num rate;
+  double rate;
   num likes;
   String desc;
   List<String> images;
@@ -47,7 +47,7 @@ class Movie {
             'assets/images/blackPanther2.jpg'
           ]),
       Movie(
-          'assets/images/oppenheimerBG.jpg',
+          'assets/images/oppenheimerBG.jpeg',
           'assets/images/oppenheimerIcon.jpg',
           'Oppenheimer',
           'Drama',
@@ -70,9 +70,9 @@ class Movie {
           4.0,
           101087,
           "A 2023 fantasy comedy film directed by Greta Gerwig, 'Barbie' is inspired by Mattel's iconic fashion dolls. Gerwig infuses a feminist perspective into the story, offering a unique take on the classic character.",
-          ['assets/images/barbie1.jpg', 'assets/images/barbie2.jpg']),
+          ['assets/images/barbie1.jpeg', 'assets/images/barbie2.jpg']),
       Movie(
-          'assets/images/oppenheimerBG.jpg',
+          'assets/images/oppenheimerBG.jpeg',
           'assets/images/oppenheimerIcon.jpg',
           'Oppenheimer',
           'Drama',
@@ -82,7 +82,7 @@ class Movie {
           "Christopher Nolan's 'Oppenheimer' centers around physicist J. Robert Oppenheimer in a Cold War conspiracy. The film explores Oppenheimer's complex life and contributions amidst political intrigue",
           ['assets/images/oppenheimer1.jpg', 'assets/images/oppenheimer2.jpg']),
       Movie(
-          'assets/images/theLittleMermaidBG.jpg',
+          'assets/images/theLittleMermaidBG.jpeg',
           'assets/images/theLittleMermaidIcon.jpg',
           'The little mermaid',
           'Fantasy',

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:moviestore/models/movies.dart';
+import 'package:moviestore/pages/details/details.dart';
 
 class Newest extends StatelessWidget {
   Newest({super.key});
@@ -21,11 +22,17 @@ class Newest extends StatelessWidget {
                         borderRadius: BorderRadius.circular(20)),
                     child: Row(
                       children: [
-                        ClipRRect(
-                          borderRadius: BorderRadius.circular(10),
-                          child: Image.asset(
-                            movie.iconImage,
-                            width: 60,
+                        GestureDetector(
+                          onTap: () => Navigator.of(context).push(
+                              MaterialPageRoute(
+                                  builder: (context) =>
+                                      DetailPage(movie: movie))),
+                          child: ClipRRect(
+                            borderRadius: BorderRadius.circular(10),
+                            child: Image.asset(
+                              movie.iconImage,
+                              width: 60,
+                            ),
                           ),
                         ),
                         const SizedBox(
@@ -47,6 +54,8 @@ class Newest extends StatelessWidget {
                                     MainAxisAlignment.spaceBetween,
                                 children: [
                                   Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
                                     children: [
                                       Text(
                                         movie.category,
