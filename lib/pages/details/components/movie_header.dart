@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:moviestore/models/movies.dart';
+import 'package:moviestore/pages/details/components/movie_header/rating_widget.dart';
 
 class MovieHeader extends StatelessWidget {
   const MovieHeader({super.key, required this.movie});
@@ -38,17 +39,7 @@ class MovieHeader extends StatelessWidget {
                 ),
                 Row(
                   children: [
-                    Row(
-                      children: [
-                        const Icon(Icons.star,
-                            size: 20, color: Color(0xFF8E94F2)),
-                        Text(
-                          movie.rate.toString(),
-                          style: const TextStyle(
-                              fontSize: 14, fontWeight: FontWeight.bold),
-                        )
-                      ],
-                    ),
+                    RatingWidget(movie: movie),
                     const SizedBox(
                       width: 30,
                     ),

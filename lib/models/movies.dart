@@ -4,10 +4,12 @@ class Movie {
   String title;
   String category;
   num views;
-  double rate;
-  num likes;
+  double globalRate;
+  num userRate = 1;
+  num reviews;
   String desc;
   List<String> images;
+  bool rated = false;
 
   Movie(
     this.bgImage,
@@ -15,8 +17,8 @@ class Movie {
     this.title,
     this.category,
     this.views,
-    this.rate,
-    this.likes,
+    this.globalRate,
+    this.reviews,
     this.desc,
     this.images,
   );
