@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:moviestore/models/catalog.dart';
 import 'package:moviestore/pages/home/components/home_content.dart';
 import 'package:moviestore/pages/home/components/header.dart';
 import 'package:moviestore/pages/home/components/search_bar.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -41,7 +43,14 @@ class HomePage extends StatelessWidget {
                 )),
           ),
           Column(
-            children: [const Header(), const SearchSection(), Content()],
+            children: [
+              const Header(),
+              const SearchSection(),
+              ChangeNotifierProvider(
+                create: (context) => MoviesCatalog(),
+                child: Content(),
+              )
+            ],
           ),
         ],
       )),
