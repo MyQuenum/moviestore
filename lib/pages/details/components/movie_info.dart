@@ -17,15 +17,15 @@ class MovieInfo extends StatelessWidget {
       color: const Color(0xFFF9F9F9),
       child: Column(
         children: [
-          MovieHeader(movie: movie),
+          const MovieHeader(),
           const SizedBox(
             height: 30,
           ),
-          MovieImages(images: movie.images),
+          const MovieImages(),
           const SizedBox(
             height: 30,
           ),
-          MovieDescription(description: movie.desc),
+          const MovieDescription(),
           const SizedBox(
             height: 30,
           ),

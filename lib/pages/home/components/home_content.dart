@@ -92,7 +92,7 @@ class Content extends StatelessWidget {
                   fontSize: 20),
             ),
           ),
-          PopularMovies(),
+          const PopularMovies(),
           Container(
             padding: const EdgeInsets.symmetric(horizontal: 20),
             child: const Text(
@@ -103,7 +103,7 @@ class Content extends StatelessWidget {
                   fontSize: 20),
             ),
           ),
-          Newest()
+          const Newest()
         ],
       ),
     );

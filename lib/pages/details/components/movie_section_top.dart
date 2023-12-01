@@ -1,23 +1,22 @@
 import 'package:flutter/material.dart';
-import 'package:moviestore/models/movies.dart';
+import 'package:moviestore/models/catalog.dart';
+import 'package:provider/provider.dart';
 
 class MovieSectionTop extends SliverPersistentHeaderDelegate {
   MovieSectionTop(
-      {required this.movie,
-      required this.topMaxHeight,
+      {required this.topMaxHeight,
       required this.contentRoundedBarHeight});
 
-  final Movie movie;
   final double topMaxHeight;
   final double contentRoundedBarHeight;
 
   @override
   Widget build(
       BuildContext context, double shrinkOffset, bool overlapsContent) {
-    return Stack(
+    return Consumer<MoviesCatalog>(builder: (context, catalog, child) => Stack(
       children: [
         Image.asset(
-          movie.bgImage,
+          catalog.selectedMovie.bgImage,
           width: MediaQuery.of(context).size.width,
           fit: BoxFit.cover,
         ),
@@ -55,7 +54,7 @@ class MovieSectionTop extends SliverPersistentHeaderDelegate {
           ),
         )
       ],
-    );
+    ));
   }
 
   @override

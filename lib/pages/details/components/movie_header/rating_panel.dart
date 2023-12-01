@@ -1,45 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:moviestore/models/movies.dart';
+import 'package:moviestore/models/catalog.dart';
+import 'package:provider/provider.dart';
 
-class RatingPanel extends StatefulWidget {
-  const RatingPanel({super.key, required this.movie});
-
-  final Movie movie;
-
-  @override
-  State<RatingPanel> createState() => _RatingPanelState();
-}
-
-class _RatingPanelState extends State<RatingPanel> {
-  void _rateMovie() {
-    setState(() {
-      widget.movie.rated = true;
-      widget.movie.globalRate =
-          ((widget.movie.globalRate * widget.movie.reviews) +
-                  widget.movie.userRate) /
-              (widget.movie.reviews + 1);
-      widget.movie.reviews++;
-      Navigator.of(context).pop();
-    });
-  }
-
-  void _cancelReview() {
-    setState(() {
-      widget.movie.globalRate =
-          ((widget.movie.globalRate * widget.movie.reviews) -
-                  widget.movie.userRate) /
-              (widget.movie.reviews - 1);
-      widget.movie.userRate = 1;
-      widget.movie.reviews--;
-      widget.movie.rated = false;
-      Navigator.of(context).pop();
-    });
-  }
+class RatingPanel extends StatelessWidget {
+  const RatingPanel({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return AlertDialog(
-        contentPadding: EdgeInsets.all(0),
+    return Consumer<MoviesCatalog>(builder: (context, catalog, child) => AlertDialog(
+        contentPadding: const EdgeInsets.all(0),
         title: const Text(
           'Rate this movie',
           textAlign: TextAlign.center,
@@ -54,9 +23,7 @@ class _RatingPanelState extends State<RatingPanel> {
                   IconButton(
                       iconSize: 40,
                       padding: const EdgeInsets.symmetric(horizontal: 0),
-                      onPressed: () => setState(() {
-                            widget.movie.userRate = 1;
-                          }),
+                      onPressed: () => catalog.selectedMovie.userRate = 1,
                       icon: const Icon(
                         Icons.star,
                         color: Color(0xFF8E94F2),
@@ -64,10 +31,8 @@ class _RatingPanelState extends State<RatingPanel> {
                   IconButton(
                       iconSize: 40,
                       padding: const EdgeInsets.symmetric(horizontal: 0),
-                      onPressed: () => setState(() {
-                            widget.movie.userRate = 2;
-                          }),
-                      icon: (widget.movie.userRate >= 2
+                      onPressed: () => catalog.selectedMovie.userRate = 2,
+                      icon: (catalog.selectedMovie.userRate >= 2
                           ? const Icon(
                               Icons.star,
                               color: Color(0xFF8E94F2),
@@ -79,10 +44,8 @@ class _RatingPanelState extends State<RatingPanel> {
                   IconButton(
                       iconSize: 40,
                       padding: const EdgeInsets.symmetric(horizontal: 0),
-                      onPressed: () => setState(() {
-                            widget.movie.userRate = 3;
-                          }),
-                      icon: (widget.movie.userRate >= 3
+                      onPressed: () => catalog.selectedMovie.userRate = 3,
+                      icon: (catalog.selectedMovie.userRate >= 3
                           ? const Icon(
                               Icons.star,
                               color: Color(0xFF8E94F2),
@@ -94,10 +57,8 @@ class _RatingPanelState extends State<RatingPanel> {
                   IconButton(
                       iconSize: 40,
                       padding: const EdgeInsets.symmetric(horizontal: 0),
-                      onPressed: () => setState(() {
-                            widget.movie.userRate = 4;
-                          }),
-                      icon: (widget.movie.userRate >= 4
+                      onPressed: () => catalog.selectedMovie.userRate = 4,
+                      icon: (catalog.selectedMovie.userRate >= 4
                           ? const Icon(
                               Icons.star,
                               color: Color(0xFF8E94F2),
@@ -109,10 +70,8 @@ class _RatingPanelState extends State<RatingPanel> {
                   IconButton(
                       iconSize: 40,
                       padding: const EdgeInsets.symmetric(horizontal: 0),
-                      onPressed: () => setState(() {
-                            widget.movie.userRate = 5;
-                          }),
-                      icon: (widget.movie.userRate >= 5
+                      onPressed: () => catalog.selectedMovie.userRate = 5,
+                      icon: (catalog.selectedMovie.userRate >= 5
                           ? const Icon(
                               Icons.star,
                               color: Color(0xFF8E94F2),
@@ -128,7 +87,7 @@ class _RatingPanelState extends State<RatingPanel> {
                 children: [
                   SizedBox(
                     child: TextButton(
-                      onPressed: () => _rateMovie(),
+                      onPressed: () => catalog.rateMovie(),
                       child: const Text(
                         'Rate',
                         style:
@@ -138,12 +97,12 @@ class _RatingPanelState extends State<RatingPanel> {
                   ),
                   TextButton(
                     onPressed: () => {
-                      if (widget.movie.rated)
-                        {_cancelReview()}
+                      if (catalog.selectedMovie.rated)
+                        catalog.cancelReview()
                       else
                         {Navigator.of(context).pop()}
                     },
-                    child: (widget.movie.rated
+                    child: (catalog.selectedMovie.rated
                         ? const Text(
                             'Cancel review',
                             style: TextStyle(color: Colors.red, fontSize: 16),
@@ -157,6 +116,6 @@ class _RatingPanelState extends State<RatingPanel> {
               )
             ],
           ),
-        ));
+        )));
   }
 }
