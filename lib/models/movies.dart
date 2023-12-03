@@ -3,10 +3,10 @@ class Movie {
   String iconImage;
   String title;
   String category;
-  num views;
+  int views;
   double globalRate;
-  num userRate = 1;
-  num reviews;
+  int userRate = 1;
+  int reviews;
   String desc;
   List<String> images;
   bool rated = false;

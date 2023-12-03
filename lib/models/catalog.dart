@@ -21,16 +21,12 @@ class MoviesCatalog extends ChangeNotifier {
     notifyListeners();
   }
 
-  void setRate(num rate){
-    _selectedMovie.userRate = rate;
-    notifyListeners();
-  }
-
-  void rateMovie() {
+  void rateMovie(int userRate) {
     _selectedMovie.rated = true;
+    _selectedMovie.userRate = userRate;
     _selectedMovie.globalRate =
         ((_selectedMovie.globalRate * _selectedMovie.reviews) +
-                _selectedMovie.userRate) /
+                userRate) /
             (_selectedMovie.reviews + 1);
     _selectedMovie.reviews++;
     notifyListeners();
