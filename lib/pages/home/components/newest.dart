@@ -28,7 +28,7 @@ class Newest extends StatelessWidget {
                                     Navigator.of(context).push(
                                       MaterialPageRoute(
                                           builder: (context) =>
-                                              DetailPage(movie: movie)))
+                                              const DetailPage()))
                                   },
                                   child: ClipRRect(
                                     borderRadius: BorderRadius.circular(10),

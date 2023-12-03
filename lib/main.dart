@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:moviestore/models/catalog.dart';
 import 'package:moviestore/pages/home/home.dart';
+import 'package:provider/provider.dart';
 
 
 void main() {
@@ -11,10 +13,10 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return ChangeNotifierProvider(create: (context) => MoviesCatalog(), child: const MaterialApp(
       title: 'MovieStore',
       debugShowCheckedModeBanner: false,
       home: HomePage(),
-    );
+    ));
   }
 }

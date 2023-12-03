@@ -1,13 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:moviestore/models/movies.dart';
 import 'package:moviestore/pages/details/components/movie_description.dart';
 import 'package:moviestore/pages/details/components/movie_images.dart';
 import 'package:moviestore/pages/details/components/movie_header.dart';
 
 class MovieInfo extends StatelessWidget {
-  const MovieInfo({super.key, required this.movie});
+  const MovieInfo({super.key});
 
-  final Movie movie;
 
   @override
   Widget build(BuildContext context) {

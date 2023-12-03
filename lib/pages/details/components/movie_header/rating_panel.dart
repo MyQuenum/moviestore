@@ -23,7 +23,9 @@ class RatingPanel extends StatelessWidget {
                   IconButton(
                       iconSize: 40,
                       padding: const EdgeInsets.symmetric(horizontal: 0),
-                      onPressed: () => catalog.selectedMovie.userRate = 1,
+                      onPressed: () =>{
+                        catalog.setRate(1)
+                      },
                       icon: const Icon(
                         Icons.star,
                         color: Color(0xFF8E94F2),
@@ -31,7 +33,9 @@ class RatingPanel extends StatelessWidget {
                   IconButton(
                       iconSize: 40,
                       padding: const EdgeInsets.symmetric(horizontal: 0),
-                      onPressed: () => catalog.selectedMovie.userRate = 2,
+                      onPressed: () =>{
+                        catalog.setRate(2)
+                      },
                       icon: (catalog.selectedMovie.userRate >= 2
                           ? const Icon(
                               Icons.star,
@@ -44,7 +48,9 @@ class RatingPanel extends StatelessWidget {
                   IconButton(
                       iconSize: 40,
                       padding: const EdgeInsets.symmetric(horizontal: 0),
-                      onPressed: () => catalog.selectedMovie.userRate = 3,
+                      onPressed: () =>{
+                        catalog.setRate(3)
+                      },
                       icon: (catalog.selectedMovie.userRate >= 3
                           ? const Icon(
                               Icons.star,
@@ -57,7 +63,9 @@ class RatingPanel extends StatelessWidget {
                   IconButton(
                       iconSize: 40,
                       padding: const EdgeInsets.symmetric(horizontal: 0),
-                      onPressed: () => catalog.selectedMovie.userRate = 4,
+                      onPressed: () =>{
+                        catalog.setRate(4)
+                      },
                       icon: (catalog.selectedMovie.userRate >= 4
                           ? const Icon(
                               Icons.star,
@@ -70,7 +78,9 @@ class RatingPanel extends StatelessWidget {
                   IconButton(
                       iconSize: 40,
                       padding: const EdgeInsets.symmetric(horizontal: 0),
-                      onPressed: () => catalog.selectedMovie.userRate = 5,
+                      onPressed: () =>{
+                        catalog.setRate(5)
+                      },
                       icon: (catalog.selectedMovie.userRate >= 5
                           ? const Icon(
                               Icons.star,
@@ -87,7 +97,10 @@ class RatingPanel extends StatelessWidget {
                 children: [
                   SizedBox(
                     child: TextButton(
-                      onPressed: () => catalog.rateMovie(),
+                      onPressed: () => {
+                        catalog.rateMovie(),
+                        Navigator.of(context).pop()
+                      },
                       child: const Text(
                         'Rate',
                         style:
@@ -97,9 +110,10 @@ class RatingPanel extends StatelessWidget {
                   ),
                   TextButton(
                     onPressed: () => {
-                      if (catalog.selectedMovie.rated)
-                        catalog.cancelReview()
-                      else
+                      if (catalog.selectedMovie.rated){
+                        catalog.cancelReview(),
+                        Navigator.of(context).pop()
+                      }else
                         {Navigator.of(context).pop()}
                     },
                     child: (catalog.selectedMovie.rated

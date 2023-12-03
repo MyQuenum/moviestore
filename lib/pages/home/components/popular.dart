@@ -16,7 +16,7 @@ class PopularMovies extends StatelessWidget {
           itemBuilder: ((context, index) => GestureDetector(
             onTap: () => {
               catalog.selectMovie(catalog.popularMovies[index]),
-              Navigator.of(context).push(MaterialPageRoute(builder: ((context) => DetailPage(movie: catalog.popularMovies[index]))))
+              Navigator.of(context).push(MaterialPageRoute(builder: ((context) => const DetailPage())))
             },
                 child: Card(
                   elevation: 7,
